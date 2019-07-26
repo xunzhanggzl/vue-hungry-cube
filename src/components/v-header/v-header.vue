@@ -23,8 +23,7 @@
       </div>
     </div>
     <div class="bulletin-wrapper">
-      <span class="bulletin-title"></span>
-      <span class="bulletin-text">{{seller.bulletin}}</span>
+      <span class="bulletin-title"></span><span class="bulletin-text">{{seller.bulletin}}</span>
       <i class="icon-keyboard_arrow_right"></i>
     </div>
     <div class="background">
@@ -131,7 +130,6 @@ export default {
           font-size: $fontsize-small-s
 
     .bulletin-wrapper
-      position: relative
       display: flex
       align-items: center
       height: 28px
