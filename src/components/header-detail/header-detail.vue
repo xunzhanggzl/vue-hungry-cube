@@ -91,6 +91,7 @@
       opacity: 0
       background: $color-background
     .detail-wrapper
+      // 解决了 margin-top 的 bug
       display: inline-block
       width: 100%
       min-height: 100%

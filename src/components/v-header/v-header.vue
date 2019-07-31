@@ -139,7 +139,7 @@ export default {
       .bulletin-title
         flex: 0 0 22px
         width: 22px
-        height: 12px
+        height: 14px
         margin-right: 4px
         bg-image('bulletin')
         background-size: 22px 12px
