@@ -1,5 +1,9 @@
 # vue-hungry-cube
 
+```
+git remote set-url origin https://github.com/YOUR-USERNAME/YOUR-REPO.git
+```
+
 ## Project setup
 ```
 npm install
