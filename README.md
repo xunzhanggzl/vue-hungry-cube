@@ -1,4 +1,4 @@
-# vue-sell-cube
+# vue-hungry-cube
 
 ## Project setup
 ```
