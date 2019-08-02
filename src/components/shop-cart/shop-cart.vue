@@ -1,13 +1,15 @@
 <template>
-  <!-- <div> -->
+  <div>
     <div class="shopcart">
       <div class="content">
         <div class="content-left">
           <div class="logo-wrapper">
-            <div class="logo">
-              <i class="icon-shopping_cart"></i>
+            <div class="logo" :class="{'highlight':totalPrice>0}">
+              <i class="icon-shopping_cart" :class="{'highlight':totalPrice>0}"></i>
             </div>
-            <div class="num" v-show="totalCount>0"></div>
+            <div class="num" v-show="totalCount>0">
+              <bubble :num="totalCount"></bubble>
+            </div>
           </div>
           <div class="price" :class="{'highlight':totalPrice>0}">¥{{totalPrice}}</div>
           <div class="desc">另需配送费¥{{deliveryPrice}}元</div>
@@ -15,16 +17,16 @@
         <div class="content-right">
           <div class="pay" :class="payClass">
             {{payDesc}}
-          </div>if (this.totalPrice === 0) {
-            return `¥${}`
-          }
+          </div>
         </div>
       </div>
     </div>
-  <!-- </div> -->
+  </div>
 </template>
 
 <script>
+  import Bubble from 'components/bubble/bubble'
+
   export default {
     name: 'shop-cart',
     props: {
@@ -75,6 +77,9 @@
           return 'enough'
         }
       }
+    },
+    components: {
+      Bubble
     }
   }
 </script>
