@@ -39,11 +39,18 @@
         </cube-scroll-nav-panel>
       </cube-scroll-nav>
     </div>
+    <div class="shop-cart-wrapper">
+      <shop-cart
+        :deliveryPrice="seller.deliveryPrice"
+        :minPrice="seller.minPrice">
+      </shop-cart>
+    </div>
   </div>
 </template>
 
 <script>
   import { getGoods } from 'api'
+  import ShopCart from 'components/shop-cart/shop-cart'
 
   export default {
     name: 'goods',
@@ -64,12 +71,20 @@
         }
       }
     },
+    computed: {
+      seller() {
+        return this.data.seller
+      }
+    },
     methods: {
       fetch() {
         getGoods().then((goods) => {
           this.goods = goods
         })
       }
+    },
+    components: {
+      ShopCart
     }
   }
 </script>
