@@ -72,7 +72,7 @@
     methods: {
       onChange(current) {
         this.index = current
-        console.log(this.$refs)
+        // console.log(this.$refs)
         const component = this.$refs.component[current]
         component.fetch && component.fetch()
       },
