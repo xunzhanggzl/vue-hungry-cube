@@ -69,11 +69,20 @@
       minPrice: {
         type: Number,
         default: 0
+      },
+      fold: {
+        type: Boolean,
+        default: true
+      },
+      sticky: {
+        type: Boolean,
+        default: false
       }
     },
     data() {
       return {
-        balls: createBalls()
+        balls: createBalls(),
+        listFold: this.fold
       }
     },
     computed: {
@@ -111,7 +120,6 @@
     },
     created() {
       this.dropBalls = []
-      this.listFold = true
     },
     methods: {
       drop(el) {
@@ -156,6 +164,7 @@
           }
           this.listFold = false
           this._showShopCartList()
+          this._showShopCartSticky()
         } else {
           this.listFold = true
           this._hideShopCartList()
@@ -169,13 +178,37 @@
           $events: {
             hide: () => {
               this.listFold = true
+            },
+            leave: () => {
+              this._hideShopCartSticky()
             }
           }
         })
         this.shopCartListComp.show()
       },
+      _showShopCartSticky() {
+        this.shopCartStickyComp = this.shopCartStickyComp || this.$createShopCartSticky({
+          $props: {
+            selectFoods: 'selectFoods',
+            deliveryPrice: 'deliveryPrice',
+            minPrice: 'minPrice',
+            fold: 'listFold',
+            list: this.shopCartListComp
+          }
+        })
+        this.shopCartStickyComp.show()
+      },
       _hideShopCartList() {
-        this.shopCartListComp.hide()
+        const comp = this.sticky ? this.$parent.list : this.shopCartListComp
+        comp.hide && comp.hide()
+      },
+      _hideShopCartSticky() {
+        this.shopCartStickyComp.hide()
+      }
+    },
+    watch: {
+      fold(newVal) {
+        this.listFold = newVal
       }
     },
     components: {
