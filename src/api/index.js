@@ -5,7 +5,7 @@ const getGoods = get('/api/goods')
 const getRatings = get('/api/ratings')
 
 export {
-    getSeller,
-    getGoods,
-    getRatings
+  getSeller,
+  getGoods,
+  getRatings
 }
